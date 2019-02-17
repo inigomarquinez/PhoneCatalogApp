@@ -2,8 +2,13 @@
   "name": "PhoneCatalogApp-frontend",
   "version": "1.0.0",
   "private": true,
+  "author": "Íñigo Marquínez",
+  "contributors": [
+    "Íñigo Marquínez"
+  ],
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "axios": "^0.18.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",

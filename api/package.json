@@ -5,11 +5,15 @@
   "main": "index.js",
   "repository": "https://github.com/inigomarquinez/PhoneCatalogApp",
   "author": "Íñigo Marquínez",
+  "contributors": [
+    "Íñigo Marquínez"
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
-    "graphql": "^14.1.1"
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4"
   }
 }
