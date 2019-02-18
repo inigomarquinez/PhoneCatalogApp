@@ -1,11 +1,25 @@
-import { createAction, createReducer } from 'redux-starter-kit';
+import { createReducer } from 'redux-starter-kit';
 
-const increment = createAction('increment');
-const decrement = createAction('decrement');
+import { setDataLoaded, setPhoneList, setSelectedPhoneId } from '../actions';
 
-const rootReducer = createReducer(0, {
-  [increment]: (state, action) => state + action.payload,
-  [decrement.type]: (state, action) => state - action.payload
+// Initial state
+const initialState = {
+  isDataLoaded: false,
+  phoneList: [],
+  selectedPhoneId: null
+};
+
+// Reducers
+const rootReducer = createReducer(initialState, {
+  [setDataLoaded]: (state, action) => {
+    return { ...state, isDataLoaded: action.payload };
+  },
+  [setPhoneList]: (state, action) => {
+    return { ...state, phoneList: action.payload };
+  },
+  [setSelectedPhoneId]: (state, action) => {
+    return { ...state, selectedPhoneId: action.payload };
+  }
 });
 
 export default rootReducer;

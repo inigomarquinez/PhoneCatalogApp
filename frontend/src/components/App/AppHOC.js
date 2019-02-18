@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import axios from 'axios';
 
 import App from './App';
+import { setDataLoaded, setPhoneList } from '../../actions';
 
 const mapStateToProps = null;
 const mapDispatchToProps = null;
@@ -12,8 +13,14 @@ const ReduxConnector = connect(
   mapDispatchToProps
 );
 
-const AppHOC = compose(
+export default compose(
   ReduxConnector,
+  withHandlers({
+    dataReceived: ({ dispatch }) => data => {
+      dispatch(setPhoneList(data));
+      dispatch(setDataLoaded(true));
+    }
+  }),
   lifecycle({
     componentDidMount() {
       axios({
@@ -35,29 +42,9 @@ const AppHOC = compose(
             `
         }
       }).then(result => {
-        console.log(result.data);
+        console.log(result.data.data.phones);
+        this.props.dataReceived(result.data.data.phones);
       });
-      // axios({
-      //   url: 'http://localhost:4000/phones',
-      //   method: 'post',
-      //   data: {
-      //     query: `
-      //       query PostsForAuthor {
-      //         author(id: 1) {
-      //           firstName
-      //           posts {
-      //             title
-      //             votes
-      //           }
-      //         }
-      //       }
-      //       `
-      //   }
-      // }).then(result => {
-      //   console.log(result.data);
-      // });
     }
   })
 )(App);
-
-export default AppHOC;
