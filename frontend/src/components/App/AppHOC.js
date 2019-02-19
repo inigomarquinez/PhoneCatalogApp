@@ -16,15 +16,9 @@ const ReduxConnector = connect(
 export default compose(
   ReduxConnector,
   withHandlers({
-    dataReceived: ({ dispatch }) => data => {
-      dispatch(setPhoneList(data));
-      dispatch(setDataLoaded(true));
-    }
-  }),
-  lifecycle({
-    componentDidMount() {
+    fetchData: ({ dispatch }) => () => {
       axios({
-        url: 'http://localhost:4000/phones',
+        url: `${window.location.protocol}//${window.location.hostname}:4000/phones`,
         method: 'post',
         data: {
           query: `
@@ -36,15 +30,24 @@ export default compose(
                 description,
                 color,
                 price,
+                thumbnail,
                 image
               } 
            }
             `
         }
       }).then(result => {
-        console.log(result.data.data.phones);
-        this.props.dataReceived(result.data.data.phones);
+        //dataReceived(result.data.data.phones);
+        dispatch(setPhoneList(result.data.data.phones));
+        dispatch(setDataLoaded(true));
+      }).catch(error => {
+        console.log(error)
       });
+    }
+  }),
+  lifecycle({
+    componentDidMount() {
+      this.props.fetchData();
     }
   })
 )(App);

@@ -14,7 +14,8 @@ const typeDefs = `
     description: String,
     color: String,
     price: String,
-    image: String
+    image: String,
+    thumbnail: String
   },
 
   # the schema allows the following query:

@@ -12,6 +12,7 @@ import PhonePreview from '../PhonePreview';
 
 const PhoneListContainer = ({ brandList, filteredPhoneList, selectedBrands, setSelectedBrands }) => (
   <React.Fragment>
+    
     <FormControl>
       <InputLabel shrink htmlFor="brand-label-placeholder">
         Brand
@@ -29,7 +30,6 @@ const PhoneListContainer = ({ brandList, filteredPhoneList, selectedBrands, setS
       </Select>
       <FormHelperText>You can filter by brand</FormHelperText>
     </FormControl>
-
     <Grid container direction="row" spacing={16}>
       {filteredPhoneList.map((phone, index) => (
         <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2}>

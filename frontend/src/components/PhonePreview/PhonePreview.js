@@ -9,22 +9,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
-  card: {
-    //maxWidth: 345
-  },
-  media: {
-    height: 140
-  }
-};
+import styles from './styles.css.js';
 
 const PhonePreview = ({ classes, onLearnMoreClick, phone }) => (
   <Card className={classes.card}>
     <CardActionArea>
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="Contemplative Reptile"
+        image={`${window.location.protocol}//${window.location.hostname}:4000${phone.thumbnail}`}
+        title={phone.name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
@@ -36,10 +29,7 @@ const PhonePreview = ({ classes, onLearnMoreClick, phone }) => (
         </Typography>
       </CardContent>
     </CardActionArea>
-    <CardActions>
-      <Button size="small" color="primary">
-        Share
-      </Button>
+    <CardActions className={classes.actions}>
       <Button size="small" color="primary" onClick={onLearnMoreClick}>
         Learn More
       </Button>

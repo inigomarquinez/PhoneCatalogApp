@@ -11,7 +11,7 @@ import styles from './App.css.js';
 const App = ({ classes }) => (
   <React.Fragment>
     <header className={classes.header}>
-      {/**<img src={logo} alt="gs-logo" height="100"></img>*/}PhoneCatalogApp
+      <img src={logo} alt="gs-logo" height="100" />PhoneCatalogApp
     </header>
     <div className={classes.body}>
       <AppRouter />
