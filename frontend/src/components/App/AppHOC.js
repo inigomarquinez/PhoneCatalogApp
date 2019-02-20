@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, withHandlers } from 'recompose';
+import { compose, lifecycle, withHandlers, withState } from 'recompose';
 import axios from 'axios';
 
 import App from './App';
@@ -15,8 +15,12 @@ const ReduxConnector = connect(
 
 export default compose(
   ReduxConnector,
+  withState('error', 'setError', null),
   withHandlers({
-    fetchData: ({ dispatch }) => () => {
+    fetchData: ({ dispatch, setError }) => () => {
+      console.log(
+        `Fetching data from ${window.location.protocol}//${window.location.hostname}:4000/phones`
+      );
       axios({
         url: `${window.location.protocol}//${window.location.hostname}:4000/phones`,
         method: 'post',
@@ -36,13 +40,16 @@ export default compose(
            }
             `
         }
-      }).then(result => {
-        //dataReceived(result.data.data.phones);
-        dispatch(setPhoneList(result.data.data.phones));
-        dispatch(setDataLoaded(true));
-      }).catch(error => {
-        console.log(error)
-      });
+      })
+        .then(result => {
+          setError(null);
+          dispatch(setPhoneList(result.data.data.phones));
+          dispatch(setDataLoaded(true));
+        })
+        .catch(error => {
+          console.log(error);
+          setError('error');
+        });
     }
   }),
   lifecycle({
