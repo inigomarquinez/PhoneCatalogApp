@@ -1,12 +1,12 @@
-export default {
-    card: {
-      //maxWidth: 345
-    },
-    media: {
-      height: 140
-    },
-    actions: {
-      display: 'flex',
-      justifyContent: 'flex-end'
-    }
-  };
+export default theme => ({
+  card: {
+    //maxWidth: 400
+  },
+  media: {
+    height: 200,
+    paddingTop: '56.25%' // 16:9
+  },
+  actions: {
+    display: 'flex'
+  }
+});

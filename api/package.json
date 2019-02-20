@@ -8,12 +8,17 @@
   "contributors": [
     "Íñigo Marquínez"
   ],
+  "scripts": {
+    "start": "node .",
+    "production": "NODE_ENV=production node ."
+  },
   "license": "MIT",
   "private": false,
   "dependencies": {
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
-    "graphql-tools": "^4.0.4"
+    "graphql-tools": "^4.0.4",
+    "winston": "^3.2.1"
   }
 }

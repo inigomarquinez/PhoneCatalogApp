@@ -1,3 +1,6 @@
+/**
+ * @file Definition of the redux reducers.
+ */
 import { createReducer } from 'redux-starter-kit';
 
 import { setDataLoaded, setPhoneList, setSelectedPhoneId } from '../actions';

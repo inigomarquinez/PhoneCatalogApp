@@ -30,12 +30,15 @@ export default compose(
               phones {
                 id,
                 brand,
-                name,
+                colors,
                 description,
-                color,
+                images,
+                name,
                 price,
+                summary,
                 thumbnail,
-                image
+                web,
+                year
               } 
            }
             `

@@ -24,8 +24,8 @@ const ReduxConnector = connect(
 export default compose(
   ReduxConnector,
   withHandlers({
-    handleBuy: () => () => {
-      window.open('https://www.google.es', '_blank');
+    handleBuy: ({ phone }) => () => {
+      window.open(phone.web, '_blank');
     },
     handleClose: ({ dispatch }) => () => {
       dispatch(setSelectedPhoneId(null));

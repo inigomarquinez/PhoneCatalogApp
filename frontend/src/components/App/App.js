@@ -6,6 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import pink from '@material-ui/core/colors/pink';
+import teal from '@material-ui/core/colors/teal';
 
 import AppRouter from '../AppRouter';
 
@@ -14,8 +17,18 @@ import logo from '../../resources/logos/gs-logo.png';
 //import './App.css';
 import styles from './App.css.js';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: pink
+  },
+  status: {
+    danger: 'orange'
+  }
+});
+
 const App = ({ classes, error, fetchData }) => (
-  <React.Fragment>
+  <MuiThemeProvider theme={theme}>
     <header className={classes.header}>
       <img src={logo} alt="gs-logo" height="100" />
       PhoneCatalogApp
@@ -42,7 +55,7 @@ const App = ({ classes, error, fetchData }) => (
       </Dialog>
     </div>
     <footer className={classes.footer}>Contact Us</footer>
-  </React.Fragment>
+  </MuiThemeProvider>
 );
 
 export default withStyles(styles)(App);

@@ -1,11 +1,18 @@
+/**
+ * @file Application entry point.
+ */
+
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 
 import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import App from './components/App';
 import configureAppStore from './store/configureAppStore';
+
+// FontAwesome icons (https://fontawesome.com/)
+import '@fortawesome/fontawesome-free/js/all.min';
 
 ReactDOM.render(
   <Provider store={configureAppStore()}>

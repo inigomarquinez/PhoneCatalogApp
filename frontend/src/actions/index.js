@@ -1,5 +1,5 @@
 /**
- * @file Definition of actions.
+ * @file Definition of the redux actions.
  */
 
 import { createAction } from 'redux-starter-kit';

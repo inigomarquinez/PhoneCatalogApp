@@ -10,12 +10,15 @@ const typeDefs = `
   type Phone {
     id: Int!,
     brand: String,
-    name: String,
+    colors: [String],
     description: String,
-    color: String,
+    images: [String],
+    name: String,
     price: String,
-    image: String,
-    thumbnail: String
+    summary: String,
+    thumbnail: String,
+    web: String,
+    year: Int
   },
 
   # the schema allows the following query:

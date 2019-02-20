@@ -1,3 +1,7 @@
+/**
+ * Configuration of the redux store.
+ */
+
 import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 import rootReducer from '../reducers';
 
