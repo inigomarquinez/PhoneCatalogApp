@@ -3,15 +3,21 @@
  */
 
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, printf } = format;
+const { align, colorize, combine, printf, timestamp } = format;
 
-const myFormat = printf(({ level, message, timestamp }) => {
-  return `${timestamp} ${level}: ${message}`;
-});
+const colorizer = colorize();
 
 const logger = createLogger({
-  level: 'info',
-  format: combine(timestamp(), myFormat),
+  level: 'debug',
+  format: combine(
+    //align(),
+    timestamp(),
+    printf(({ level, message, timestamp }) => {
+      //return `${timestamp} ${level}: ${message}`;
+      let colLevel = colorizer.colorize(level, level);
+      return `${timestamp} ${colLevel}: ${message}`;
+    })
+  ),
   transports: [
     // Dump all logs to console
     new transports.Console(),

@@ -1,12 +1,15 @@
 /**
  * @file Definition of the GraphQL schema.
+ * @see {@link https://www.apollographql.com/docs/graphql-tools/generate-schema.html|GraphQL schema}
  */
 
 const { makeExecutableSchema } = require('graphql-tools');
 
 const resolvers = require('./resolvers');
 
+// Describe the schema as a GraphQL type language string
 const typeDefs = `
+  # Definition of Phone type
   type Phone {
     id: Int!,
     brand: String,
@@ -22,12 +25,15 @@ const typeDefs = `
   },
 
   # the schema allows the following query:
+  #   phones: to query the information of all the phones
+  #   phone: to query the information of a phone by its id
   type Query {
     phones: [Phone]
+    phone(id: Int!): Phone
   }
 `;
 
-// Create the schema using typeDefs and resolvers
+// Combine the schema and resolvers
 module.exports = makeExecutableSchema({
   typeDefs,
   resolvers

@@ -2,19 +2,20 @@
  * @file Application entry point.
  */
 
+ // First of all, create the LOGGER and make it global to be able to log messages from everywhere in the code
+const logger = require('./logger');
+global.logger = logger;
+
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const path = require('path');
 
-const logger = require('./logger');
 const schema = require('./graphql/schema');
-
-// Make logger global to be used along all the application.
-global.logger = logger;
 
 logger.info('WELCOME TO PhoneCatalogApp!');
 
 // Using express to build the app.
+logger.debug('Initializing Express...');
 let app = express();
 
 // To solve the following error when requesting from frontend:
@@ -26,7 +27,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Defining '/phones' endpoint GET operation
+// Defining '/phones' endpoint operations
+logger.debug('Defining `/phones` endpoint...');
 app.get(
   '/phones',
   graphqlHTTP({
@@ -34,8 +36,6 @@ app.get(
     graphiql: true
   })
 );
-
-// Defining '/phones' endpoint POST operation
 app.post(
   '/phones',
   graphqlHTTP({
@@ -46,6 +46,7 @@ app.post(
 
 // Let express serve the folder containing the images under resources folder
 // with the virtual path prefix '/resources'
+logger.info('Serving `/resources` folder under `/resources` virtual path prefix');
 const resourcesFolder = path.join(__dirname, '/resources');
 app.use('/resources', express.static(resourcesFolder));
 
@@ -66,8 +67,20 @@ app.use('/resources', express.static(resourcesFolder));
 //   // console.log('PRODUCTION RUNNING! Client served from %o', path.resolve(clientFolder, 'index.html'));
 // }
 
+
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  logger.debug('Web requested');
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
+
+
 // API will listen at port 4000
 app.listen(4000, () => {
-  logger.info('PhoneCatalogApp API listening on port 4000!');
   logger.info('Running a GraphQL API server at localhost:4000/phones');
+  logger.info('PhoneCatalogApp API listening on port 4000!');
 });
