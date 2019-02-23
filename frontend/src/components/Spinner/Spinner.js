@@ -1,16 +1,33 @@
 /**
- * @file Spinner component to show while waiting for the data to be fetched from the back-end.
+ * @file Component to show while waiting for the data to be fetched from the back-end.
  */
 
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
-const Spinner = () => (
-  <div>
-    <div>LOADING. PLEASE, WAIT.</div>
-    <div>
-      <i className="fas fa-spinner fa-pulse fa-10x" />
+import styles from './styles.css.js';
+
+/**
+ * Component to show while waiting for the data to be fetched from the back-end.
+ * @param {Object} classes - Object returned by withStyles method to apply CSS-in-JS styles to the component.
+ */
+const Spinner = ({ classes }) => (
+  <div className={classes.root}>
+    <div className={classes.content}>
+      <Typography align="center" color="primary" variant="h4">
+        Loading. Please, wait...
+      </Typography>
+      <div className={classes.spinner}>
+        <i className="fas fa-spinner fa-pulse fa-10x" />
+      </div>
     </div>
   </div>
 );
 
-export default Spinner;
+Spinner.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Spinner);

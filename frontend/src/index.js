@@ -1,22 +1,27 @@
 /**
- * @file Application entry point.
+ * @file Entry point.
  */
 
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 import configureAppStore from './store/configureAppStore';
+import theme from './theme';
+
+import './index.css';
 
 // FontAwesome icons (https://fontawesome.com/)
 import '@fortawesome/fontawesome-free/js/all.min';
 
 ReactDOM.render(
   <Provider store={configureAppStore()}>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );

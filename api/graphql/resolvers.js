@@ -3,7 +3,7 @@
  * @see {@link https://www.apollographql.com/docs/graphql-tools/resolvers.html|GraphQL resolvers}
  */
 
-const phones = require('../data');
+const phones = require('../phones/phones');
 
 module.exports = {
   // Define resolvers as a nested object that maps type and field names to resolver functions

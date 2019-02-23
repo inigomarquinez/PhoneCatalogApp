@@ -1,0 +1,19 @@
+{
+  "background_color": "#2E2E2E",
+  "dir": "ltr",
+  "display": "fullscreen",
+    "icons": [
+        {
+            "src": "/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+  "lang": "en-US",
+  "name": "GuideSmiths PhoneCatalogApp",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "short_name": "PhoneCatalogApp",
+  "start_url": "./?utm_source=web_app_manifest",
+  "theme_color": "#000000"
+}

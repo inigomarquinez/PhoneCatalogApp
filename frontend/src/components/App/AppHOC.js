@@ -1,9 +1,12 @@
-import { connect } from 'react-redux';
+/**
+ * @file Higher-Order-Component to add logic to App component.
+ */
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
-import App from './App';
 import { setDataLoaded, setPhoneList } from '../../actions';
+import App from './App';
 
 const mapStateToProps = null;
 const mapDispatchToProps = null;
@@ -17,6 +20,9 @@ export default compose(
   ReduxConnector,
   withState('error', 'setError', null),
   withHandlers({
+    contactUs: () => () => {
+      window.open('https://www.guidesmiths.com/contact', '_blank');
+    },
     fetchData: ({ dispatch, setError }) => () => {
       console.log(
         `Fetching data from ${window.location.protocol}//${window.location.hostname}:4000/phones`
@@ -30,15 +36,10 @@ export default compose(
               phones {
                 id,
                 brand,
-                colors,
-                description,
-                images,
                 name,
                 price,
                 summary,
-                thumbnail,
-                web,
-                year
+                thumbnail
               } 
            }
             `
@@ -51,7 +52,7 @@ export default compose(
         })
         .catch(error => {
           console.log(error);
-          setError('error');
+          setError('Error fetching phones information from server.');
         });
     }
   }),

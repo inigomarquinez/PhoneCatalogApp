@@ -1,3 +1,7 @@
+/**
+ * @file Higher-Order-Component to apply logic to PhoneListContainer component.
+ */
+
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { compose, defaultProps, withPropsOnChange, withState } from 'recompose';

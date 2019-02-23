@@ -1,6 +1,9 @@
 /**
- * @file Example static data to be sent to frontend queries.
+ * @file Example static information of the phones that will be requested via GraphQL.
  */
+
+const fs = require('fs');;
+const path = require('path');
 
 /**
  * Array of phones.
@@ -22,16 +25,20 @@ module.exports = [
   {
     id: 1,
     brand: 'Apple',
-    colors: [],
-    description: 'This is a longer description',
+    colors: ['a', 'b', 'c'],
+    description: fs.readFileSync(path.join(__dirname, 'descriptions', 'iPhone7.txt'), 'utf8'),
     images: [
+      '/resources/images/thumbnail_apple_iphone_7.jpg',
+      '/resources/images/thumbnail_apple_iphone_7.jpg',
+      '/resources/images/thumbnail_apple_iphone_7.jpg',
+      '/resources/images/thumbnail_apple_iphone_7.jpg',
+      '/resources/images/thumbnail_apple_iphone_7.jpg',
       '/resources/images/thumbnail_apple_iphone_7.jpg',
       '/resources/images/thumbnail_apple_iphone_7.jpg'
     ],
     name: 'iPhone 7',
     price: 529,
-    summary:
-      'El iPhone 7 da un paso de gigante en todos y cada uno de los aspectos que hacen del iPhone algo único. Nuevo sistema avanzado de cámaras. El mejor rendimiento y la mayor autonomía que se han visto en un iPhone. Altavoces estéreo. Resistencia al agua y a las salpicaduras. Y la pantalla de iPhone más brillante y con más colores hasta la fecha. Es una belleza. Es una bestia. Es el 7.',
+    summary: fs.readFileSync(path.join(__dirname, 'summaries', 'iPhone7.txt'), 'utf8'),
     thumbnail: '/resources/images/thumbnail_apple_iphone_7.jpg',
     year: 2016,
     web: 'https://www.apple.com/es/shop/buy-iphone/iphone-7'
@@ -81,7 +88,7 @@ module.exports = [
   // Xiaomi
   {
     id: 5,
-    brand: 'Xiaommi',
+    brand: 'Xiaomi',
     colors: [],
     description: 'This is a longer description',
     images: [],
@@ -95,7 +102,7 @@ module.exports = [
   },
   {
     id: 6,
-    brand: 'Xiaommi',
+    brand: 'Xiaomi',
     colors: [],
     description: 'This is a longer description',
     images: [],
@@ -109,7 +116,7 @@ module.exports = [
   },
   {
     id: 7,
-    brand: 'Xiaommi',
+    brand: 'Xiaomi',
     colors: [],
     description: 'This is a longer description',
     images: [],
@@ -123,7 +130,7 @@ module.exports = [
   },
   {
     id: 8,
-    brand: 'Xiaommi',
+    brand: 'Xiaomi',
     colors: [],
     description: 'This is a longer description',
     images: [],
@@ -144,7 +151,8 @@ module.exports = [
     images: [],
     name: 'Galaxy S9',
     price: 849,
-    summary: 'Un smartphone con carácter. Disfruta del nuevo Galaxy S9 y su cámara trasera Dual Píxel Super Slow-mo de 12MP (F1.5/F2.4) con estabilización óptica.',
+    summary:
+      'Un smartphone con carácter. Disfruta del nuevo Galaxy S9 y su cámara trasera Dual Píxel Super Slow-mo de 12MP (F1.5/F2.4) con estabilización óptica.',
     thumbnail: '',
     year: 2018,
     web: 'https://www.samsung.com/es/smartphones/galaxy-s9/'
@@ -157,7 +165,8 @@ module.exports = [
     images: [],
     name: 'Galaxy Note9',
     price: 1009,
-    summary: 'Aquí está el nuevo Samsung Galaxy Note 9 en un fantástico color negro, un smartphone con mayúsculas donde confluyen el trabajo y mismo de la compañía para crear un dispositivo perfecto.',
+    summary:
+      'Aquí está el nuevo Samsung Galaxy Note 9 en un fantástico color negro, un smartphone con mayúsculas donde confluyen el trabajo y mismo de la compañía para crear un dispositivo perfecto.',
     thumbnail: '',
     year: 2018,
     web: 'https://www.samsung.com/es/smartphones/galaxy-note9/'
@@ -170,7 +179,8 @@ module.exports = [
     images: [],
     name: 'Galaxy A7',
     price: 299,
-    summary: 'El nuevo Samsung Galaxy A7, es el último modelo de la compañía Koreana para su gama media. El Galaxy A7 cuenta con un procesador Quad Core, pantalla de 6 Pulgadas con resolución HD+ y 4GB de RAM. En su apartado fotográfico el Samsung Galaxy A7 destaca por sus 3 Cámaras traseras.',
+    summary:
+      'El nuevo Samsung Galaxy A7, es el último modelo de la compañía Koreana para su gama media. El Galaxy A7 cuenta con un procesador Quad Core, pantalla de 6 Pulgadas con resolución HD+ y 4GB de RAM. En su apartado fotográfico el Samsung Galaxy A7 destaca por sus 3 Cámaras traseras.',
     thumbnail: '',
     year: 2018,
     web: 'https://www.samsung.com/es/smartphones/galaxy-a7/'
@@ -183,7 +193,8 @@ module.exports = [
     images: [],
     name: 'Galaxy J6+',
     price: 199,
-    summary: 'El nuevo Samsung Galaxy J6 Plus, es el último modelo de la compañía Koreana para su gama media. El Galaxy J6 Plus cuenta con un procesador Quad Core, pantalla de 6 Pulgadas con resolución HD+ y 3GB de RAM.',
+    summary:
+      'El nuevo Samsung Galaxy J6 Plus, es el último modelo de la compañía Koreana para su gama media. El Galaxy J6 Plus cuenta con un procesador Quad Core, pantalla de 6 Pulgadas con resolución HD+ y 3GB de RAM.',
     thumbnail: '',
     year: 2018,
     web: 'https://www.samsung.com/es/smartphones/galaxy-j6-j610/SM-J610FZRNPHE/'

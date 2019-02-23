@@ -1,9 +1,8 @@
 /**
  * @file Definition of the redux reducers.
  */
-import { createReducer } from 'redux-starter-kit';
 
-import { setDataLoaded, setPhoneList, setSelectedPhoneId } from '../actions';
+import ACTIONS from '../actions';
 
 // Initial state
 const initialState = {
@@ -12,17 +11,21 @@ const initialState = {
   selectedPhoneId: null
 };
 
-// Reducers
-const rootReducer = createReducer(initialState, {
-  [setDataLoaded]: (state, action) => {
-    return { ...state, isDataLoaded: action.payload };
-  },
-  [setPhoneList]: (state, action) => {
-    return { ...state, phoneList: action.payload };
-  },
-  [setSelectedPhoneId]: (state, action) => {
-    return { ...state, selectedPhoneId: action.payload };
+// Root reducer
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ACTIONS.SET_DATA_LOADED:
+      return { ...state, isDataLoaded: action.payload };
+
+    case ACTIONS.SET_PHONE_LIST:
+      return { ...state, phoneList: action.payload };
+
+    case ACTIONS.SET_SELECTED_PHONE_ID:
+      return { ...state, selectedPhoneId: action.payload };
+
+    default:
+      return state;
   }
-});
+};
 
 export default rootReducer;

@@ -2,7 +2,7 @@
  * @file Application entry point.
  */
 
- // First of all, create the LOGGER and make it global to be able to log messages from everywhere in the code
+// First of all, create the LOGGER and make it global to be able to log messages from everywhere in the code
 const logger = require('./logger');
 global.logger = logger;
 
@@ -44,40 +44,27 @@ app.post(
   })
 );
 
-// Let express serve the folder containing the images under resources folder
-// with the virtual path prefix '/resources'
-logger.info('Serving `/resources` folder under `/resources` virtual path prefix');
+// Let express serve the folder containing the images under resources folder with the virtual path prefix '/resources'
+logger.info('Serving `resources` folder under `/resources` virtual path prefix...');
 const resourcesFolder = path.join(__dirname, '/resources');
 app.use('/resources', express.static(resourcesFolder));
 
 // In production mode, serve the web page from the server
-// if (process.env['NODE_ENV'] === 'production') {
-//   logger.info('Running production versin of the app');
+if (process.env['NODE_ENV'] === 'production') {
+  logger.info('Serving `client` folder...');
+  app.use(express.static(path.join(__dirname, 'client')));
+}
 
-//   // Let express serve the web page under public folder
-//   // const clientFolder = path.join(__dirname, '/public');
-//   // app.use(express.static(clientFolder));
-
-//   // const clientFolder = path.join(__dirname, '/client');
-
-//   // app.get('/', (req, res) => {
-//   //   console.log('Request web');
-//   //   res.sendFile(path.join(clientFolder, '/index.html'));
-//   // });
-//   // console.log('PRODUCTION RUNNING! Client served from %o', path.resolve(clientFolder, 'index.html'));
-// }
-
-
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function(req, res) {
-  logger.debug('Web requested');
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('*', function(req, res) {
+  if (process.env['NODE_ENV'] === 'production') {
+    // In production mode, serve the web page from the server
+    res.sendFile(path.join(__dirname, 'client', 'index.html'));
+  } else {
+    res.send(
+      "You're running development mode.<br>Run <strong><code>npm run production</code></strong> to serve the web page."
+    );
+  }
 });
-
-
-
 
 // API will listen at port 4000
 app.listen(4000, () => {

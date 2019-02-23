@@ -1,61 +1,54 @@
-import React from 'react';
+/**
+ * @file Application component (root component).
+ */
+
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import pink from '@material-ui/core/colors/pink';
-import teal from '@material-ui/core/colors/teal';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 import AppRouter from '../AppRouter';
-
+import ErrorDialog from '../ErrorDialog';
 import logo from '../../resources/logos/gs-logo.png';
+import styles from './styles.css.js';
 
-//import './App.css';
-import styles from './App.css.js';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: teal,
-    secondary: pink
-  },
-  status: {
-    danger: 'orange'
-  }
-});
-
-const App = ({ classes, error, fetchData }) => (
-  <MuiThemeProvider theme={theme}>
+/**
+ * Application component.
+ * @param {Object}    classes   - Object returned by withStyles method to apply CSS-in-JS styles to the component.
+ * @param {function}  contactUs - Function that triggers opening an external page to contact GuideSmiths.
+ * @param {String}    error     - Text that contains information in case some error occurs.
+ * @param {Object}    fetchData - Function that triggers fetching phones information from back-end.
+ */
+const App = ({ classes, contactUs, error, fetchData }) => (
+  <div className={classes.root}>
     <header className={classes.header}>
-      <img src={logo} alt="gs-logo" height="100" />
-      PhoneCatalogApp
+      <img src={logo} alt="gs-logo" height="50px" />
+      <Typography color="primary" variant="h4">
+        PhoneCatalogApp
+      </Typography>
     </header>
     <div className={classes.body}>
       <AppRouter />
-      <Dialog
-        open={error !== null}
-        onClose={() => console.log('handleClose')}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title">{'Error'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">{error}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClose={() => console.log('handleClose')} color="primary">
-            Close
-          </Button>
-          <Button onClick={fetchData} color="primary" autoFocus>
-            Try again
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <ErrorDialog
+        error={error}
+        leftButtonHandler={fetchData}
+        leftButtonText={'Try again'}
+      />
     </div>
-    <footer className={classes.footer}>Contact Us</footer>
-  </MuiThemeProvider>
+    <footer className={classes.footer}>
+      <Button color="primary" onClick={contactUs}>
+        Contact Us
+      </Button>
+    </footer>
+  </div>
 );
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+  contactUs: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  fetchData: PropTypes.func.isRequired
+};
 
 export default withStyles(styles)(App);
