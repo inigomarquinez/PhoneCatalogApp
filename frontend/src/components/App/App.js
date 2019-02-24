@@ -15,26 +15,23 @@ import styles from './styles.css.js';
 
 /**
  * Application component.
- * @param {Object}    classes   - Object returned by withStyles method to apply CSS-in-JS styles to the component.
- * @param {function}  contactUs - Function that triggers opening an external page to contact GuideSmiths.
- * @param {String}    error     - Text that contains information in case some error occurs.
- * @param {Object}    fetchData - Function that triggers fetching phones information from back-end.
+ * @param {Object}    classes         - Object returned by withStyles method to apply CSS-in-JS styles to the component.
+ * @param {function}  contactUs       - Function that triggers opening an external page to contact GuideSmiths.
+ * @param {String}    error           - Text that contains information in case some error occurs.
+ * @param {Object}    fetchData       - Function that triggers fetching phones information from back-end.
+ * @param {Object}    goToGuideSmiths - Function that triggers opens a new window to navigate to GuideSmiths.
  */
-const App = ({ classes, contactUs, error, fetchData }) => (
+const App = ({ classes, contactUs, error, fetchData, goToGuideSmiths }) => (
   <div className={classes.root}>
     <header className={classes.header}>
-      <img src={logo} alt="gs-logo" height="50px" />
+      <img className={classes.logo} src={logo} alt="gs-logo" height="50px" onClick={goToGuideSmiths} />
       <Typography color="primary" variant="h4">
         PhoneCatalogApp
       </Typography>
     </header>
     <div className={classes.body}>
       <AppRouter />
-      <ErrorDialog
-        error={error}
-        leftButtonHandler={fetchData}
-        leftButtonText={'Try again'}
-      />
+      <ErrorDialog error={error} leftButtonHandler={fetchData} leftButtonText={'Try again'} />
     </div>
     <footer className={classes.footer}>
       <Button color="primary" onClick={contactUs}>

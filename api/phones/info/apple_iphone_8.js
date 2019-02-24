@@ -6,12 +6,11 @@ module.exports = name => {
 
   return {
     brand: 'Apple',
-    colors: ['a', 'b', 'c'],
+    colors: ['gold', 'gray', 'silver'],
     name: 'iPhone 8',
     price: 689,
     year: 2017,
     web: 'https://www.apple.com/es/shop/buy-iphone/iphone-8',
-    
     description: fs.readFileSync(path.join(__dirname, 'descriptions', `${name}.txt`), 'utf8'),
     summary: fs.readFileSync(path.join(__dirname, 'summaries', `${name}.txt`), 'utf8'),
     thumbnail: `/resources/thumbnails/${name}.jpg`,

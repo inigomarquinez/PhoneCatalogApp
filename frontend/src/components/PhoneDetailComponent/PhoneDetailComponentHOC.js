@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState, lifecycle } from 'recompose';
 import axios from 'axios';
 
-import { setSelectedPhoneId } from '../../actions';
+import { setLastSelectedPhoneId, setSelectedPhoneId } from '../../actions';
 import PhoneDetailComponent from './PhoneDetailComponent';
 
 const mapStateToProps = state => ({
@@ -40,8 +40,6 @@ export default compose(
                 images,
                 name,
                 price,
-                summary,
-                thumbnail,
                 web,
                 year
               } 
@@ -59,12 +57,12 @@ export default compose(
         });
     }
   }),
-
   withHandlers({
     handleBuy: ({ phoneDetails }) => () => {
       window.open(_.get(phoneDetails, 'web', '_blank'));
     },
-    handleClose: ({ dispatch }) => () => {
+    handleClose: ({ dispatch, phoneDetails }) => () => {
+      dispatch(setLastSelectedPhoneId(phoneDetails.id));
       dispatch(setSelectedPhoneId(null));
     }
   }),

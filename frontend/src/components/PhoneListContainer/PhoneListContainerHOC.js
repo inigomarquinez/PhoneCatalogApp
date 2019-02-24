@@ -14,6 +14,7 @@ const mapStateToProps = state => {
 
   return {
     brandList: _.uniq(brands),
+    lastSelectedPhoneId: _.get(state, 'lastSelectedPhoneId'),
     phoneList
   };
 };

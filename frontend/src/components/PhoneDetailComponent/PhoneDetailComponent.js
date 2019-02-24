@@ -5,6 +5,7 @@
 import _ from 'lodash';
 import { withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -52,38 +53,69 @@ const PhoneDetailComponent = ({
       <DialogContent className={classes.content}>
         <div className={classes.images}>
           {_.get(phoneDetails, 'images', []).map((tile, index) => (
-            <img
-              key={index}
-              className={classes.img}
-              src={`${window.location.protocol}//${window.location.hostname}:4000${tile}`}
-              alt=""
-              maxheight="100%"
-              width="auto"
-            />
+            <div key={index} className={classes.imgContainer}>
+              <img
+                className={classes.img}
+                src={`${window.location.protocol}//${window.location.hostname}:4000${tile}`}
+                alt=""
+                maxheight="100%"
+                width="auto"
+              />
+            </div>
           ))}
         </div>
         <div className={classes.tableContainer}>
           <Table className={classes.table}>
             <TableBody>
               <TableRow>
-                <TableCell className={classes.titleCell}>Brand</TableCell>
-                <TableCell>{_.get(phoneDetails, 'brand')}</TableCell>
+                <TableCell>
+                  <Typography className={classes.titleCell}>Brand</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{_.get(phoneDetails, 'brand')}</Typography>
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className={classes.titleCell}>Launch year</TableCell>
-                <TableCell>{_.get(phoneDetails, 'year')}</TableCell>
+                <TableCell>
+                  <Typography className={classes.titleCell}>Launch year</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{_.get(phoneDetails, 'year')}</Typography>
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className={classes.titleCell}>Price</TableCell>
-                <TableCell>{_.get(phoneDetails, 'price')}</TableCell>
+                <TableCell>
+                  <Typography className={classes.titleCell}>Price</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{_.get(phoneDetails, 'price')} €</Typography>
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className={classes.titleCell}>Available colors</TableCell>
-                <TableCell>{_.get(phoneDetails, 'colors', []).join(', ')}</TableCell>
+                <TableCell>
+                  <Typography className={classes.titleCell}>Available colors</Typography>
+                </TableCell>
+                <TableCell>
+                  {_.get(phoneDetails, 'colors', []).map((color, index) => (
+                    <Chip
+                      key={index}
+                      className={classes.chip}
+                      color="secondary"
+                      variant="outlined"
+                      label={color}
+                    />
+                  ))}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className={classes.titleCell}>Description</TableCell>
-                <TableCell>{_.get(phoneDetails, 'description')}</TableCell>
+                <TableCell>
+                  <Typography className={classes.titleCell}>Description</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography className={classes.description} paragraph={true}>
+                    {_.get(phoneDetails, 'description')}
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>

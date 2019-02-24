@@ -54,6 +54,9 @@ export default compose(
           console.log(error);
           setError('Error fetching phones information from server.');
         });
+    },
+    goToGuideSmiths: () => () => {
+      window.open('https://www.guidesmiths.com/', 'web', '_blank');
     }
   }),
   lifecycle({

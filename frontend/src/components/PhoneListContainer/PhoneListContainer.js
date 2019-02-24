@@ -17,16 +17,18 @@ import styles from './styles.css.js';
 
 /**
  * Component that displays a grid with all the available phones with some information about each one.
- * @param {Array}     brandList         - List of available brands.
- * @param {Object}    classes           - Object returned by withStyles method to apply CSS-in-JS styles to the component.
- * @param {Array}     filteredPhoneList - List of phones to be displayed.
- * @param {Array}     selectedBrands    - List of brands selected by the user.
- * @param {function}  setSelectedBrands - Function to update the brands selected by the user.
+ * @param {Array}     brandList           - List of available brands.
+ * @param {Object}    classes             - Object returned by withStyles method to apply CSS-in-JS styles to the component.
+ * @param {Array}     filteredPhoneList   - List of phones to be displayed.
+ * @param {Array}     lastSelectedPhoneId - Id of the last selected phone by the user.
+ * @param {Array}     selectedBrands      - List of brands selected by the user.
+ * @param {function}  setSelectedBrands   - Function to update the brands selected by the user.
  */
 const PhoneListContainer = ({
   brandList,
   classes,
   filteredPhoneList,
+  lastSelectedPhoneId,
   selectedBrands,
   setSelectedBrands
 }) => (
@@ -56,7 +58,7 @@ const PhoneListContainer = ({
     <Grid container direction="row" spacing={16}>
       {filteredPhoneList.map((phone, index) => (
         <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2}>
-          <PhonePreview phone={phone} />
+          <PhonePreview phone={phone} focus={lastSelectedPhoneId === phone.id}/>
         </Grid>
       ))}
     </Grid>
@@ -67,6 +69,7 @@ PhoneListContainer.propTypes = {
   brandList: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   filteredPhoneList: PropTypes.array.isRequired,
+  lastSelectedPhoneId: PropTypes.number,
   selectedBrands: PropTypes.array.isRequired,
   setSelectedBrands: PropTypes.func.isRequired
 };

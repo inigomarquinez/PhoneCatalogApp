@@ -12,6 +12,9 @@ export default theme => ({
     height: gridListHeight,
     overflowX: 'auto'
   },
+  imgContainer: {
+    padding: '15px'
+  },
   img: {
     height: '100%'
   },
@@ -25,5 +28,11 @@ export default theme => ({
   titleCell: {
     fontWeight: 900,
     textAlign: 'right'
+  },
+  chip: {
+    margin: theme.spacing.unit
+  },
+  description: {
+    whiteSpace: 'pre-line'
   }
 });

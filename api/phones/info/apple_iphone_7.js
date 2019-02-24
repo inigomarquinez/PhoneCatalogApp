@@ -6,7 +6,7 @@ module.exports = name => {
 
   return {
     brand: 'Apple',
-    colors: ['a', 'b', 'c'],
+    colors: ['black', 'gold', 'jet black', 'red', 'rose-gold', 'silver'],
     name: 'iPhone 7',
     price: 529,
     year: 2016,

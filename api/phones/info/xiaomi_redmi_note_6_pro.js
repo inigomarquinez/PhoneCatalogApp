@@ -6,7 +6,7 @@ module.exports = name => {
 
   return {
     brand: 'Xiaomi',
-    colors: ['a', 'b', 'c'],
+    colors: ['black', 'blue', 'gold', 'pink', 'red'],
     name: 'Redmi Note 6 Pro',
     price: 199,
     year: 2018,

@@ -6,7 +6,7 @@ module.exports = name => {
 
   return {
     brand: 'Xiaomi',
-    colors: ['a', 'b', 'c'],
+    colors: ['black', 'blue', 'gold'],
     name: 'Mi A2',
     price: 249,
     year: 2018,

@@ -10,7 +10,11 @@ export default theme => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    alignContent: 'center'
+    alignContent: 'center',
+    userSelect: 'none'
+  },
+  logo: {
+    cursor: 'pointer'
   },
   body: {
     padding: '15px',

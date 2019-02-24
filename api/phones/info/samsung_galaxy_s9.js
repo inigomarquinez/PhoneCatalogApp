@@ -6,7 +6,7 @@ module.exports = name => {
 
   return {
     brand: 'Samsung',
-    colors: ['a', 'b', 'c'],
+    colors: ['black', 'cyan', 'gray', 'rose-gold'],
     name: 'Galaxy S9',
     price: 849,
     year: 2018,

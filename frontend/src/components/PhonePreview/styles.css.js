@@ -10,12 +10,14 @@ export default theme => ({
     userSelect: 'none'
   },
   media: {
-    height: 150,
+    height: 200,
     paddingTop: '56.25%'
   },
   content: {
     height: 150,
-    overflowX: 'auto'
+    overflowX: 'auto',
+    paddingTop: '10px',
+    paddingBottom: '10px'
   },
   learMore: {
     textAlign: 'right'

@@ -24,12 +24,13 @@ import styles from './styles.css.js';
  * Component to display brief information of a phone.
  * @param {Object}    classes           - Object returned by withStyles method to apply CSS-in-JS styles to the component.
  * @param {boolean}   favorite          - Flag toindicate if the user hasmarked the phone as favorite.
+ * @param {boolean}   focus             - Flag to indicate if the card should have the focus.
  * @param {function}  onLearnMoreClick  - Function that opens a dialog with detailed information about the phone.
  * @param {Object}    phone             - Brief information of the phone.
  * @param {function}  toogleFavorite    - Funtion to toggle if the user marks the phone as favorite or not.
  */
-const PhonePreview = ({ classes, favorite, onLearnMoreClick, phone, toogleFavorite }) => (
-  <Card raised={true} className={classes.card}>
+const PhonePreview = ({ classes, favorite, focus, onLearnMoreClick, phone, toogleFavorite }) => (
+  <Card raised={true} className={classes.card} focus={focus.toString()}>
     <CardHeader
       className={classes.header}
       title={phone.name}
@@ -83,6 +84,7 @@ const PhonePreview = ({ classes, favorite, onLearnMoreClick, phone, toogleFavori
 PhonePreview.propTypes = {
   classes: PropTypes.object.isRequired,
   favorite: PropTypes.bool.isRequired,
+  focus: PropTypes.bool.isRequired,
   onLearnMoreClick: PropTypes.func.isRequired,
   phone: PropTypes.object.isRequired,
   toogleFavorite: PropTypes.func.isRequired
