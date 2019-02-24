@@ -83,7 +83,7 @@ If you want to test the system out of localhost, for example, to see how it look
 1. Run the system, in doesn't matter development or production mode, as explained in previous sections.
 2. Find out the IP from where you're running the system (*ipconfig* in Windows OS or *ifconfig* in Linux OS).
 3. Go to the device where you want to test the system, open a web browser and:
-    1. If in development mode, go to http://<ip>:3000
-    2. If in production mode, go to http://<ip>:4000
+    1. If in development mode, go to http://*ip*:3000
+    2. If in production mode, go to http://*ip*:4000
 
-where <ip> is the IP found in point 2.
+where *ip* is the IP found in point 2.
