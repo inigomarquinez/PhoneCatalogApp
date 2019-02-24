@@ -1,5 +1,17 @@
 # PhoneCatalogApp front-end
 
+React app that displays the phones information retrieved from the API.
+
+To write the application, the following libraries have been used:
+
+* [React](https://reactjs.org) to build the UI.
+* [Redux] (https://redux.js.org) to manage the application state.
+* [Axios] (https://github.com/axios/axios) to fetch the data from the API.
+* [material-ui](https://material-ui.com) to implement Google's Material Design in the React components.
+* [recompose] (https://github.com/acdllite/recompose) to create Higher-Order-Components and be able to separate components rendering from logic.
+
+## create-react-app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
