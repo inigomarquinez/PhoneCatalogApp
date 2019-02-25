@@ -12,7 +12,7 @@ Simple REST API written in [Node.js](https://nodejs.org/).
 
 See more details [here](https://github.com/inigomarquinez/PhoneCatalogApp/tree/master/api/README.md).
 
-### front-end
+### frontend
 
 React application that displays the phones returned by the API.
 
