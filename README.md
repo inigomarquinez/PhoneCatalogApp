@@ -87,3 +87,41 @@ If you want to test the system out of localhost, for example, to see how it look
     2. If in production mode, go to http://*ip*:4000
 
 where *ip* is the IP found in point 2.
+
+## Docker
+
+To be able to *dockerize* the application, first [Docker](https://www.docker.com) must be installed in the system. From an Ubuntu system, open a new terminal and run the follwing comand:
+
+```
+sudo apt install docker.io
+```
+
+**To build a docker image** of the application, open a new terminal, go to the root folder of the repository in your local file system and execute the following command:
+
+```
+cd api
+sudo docker build -t phone-catalog-app .
+```
+
+**To run the *dockerized* image**, open a new terminal and execute the following command:
+
+```
+sudo docker run -p 4000:4000 phone-catalog-app
+```
+
+Then open a new web browser and go to http://localhost:4000.
+
+
+**To save the docker image** in a tar file, open a new terminal, go to the root folder of the repository in your local file system and execute the following command:
+
+```
+cd api
+sudo docker save -o ../docker-phone-catalog-app phone-catalog-app
+```
+
+**To load the docker image** from the tar file, go to the folder containing the tar image and execute the following command:
+
+
+```
+suod docker load -i docker-phone-catalog-app
+```

@@ -10,6 +10,11 @@ To write the application, the following libraries have been used:
 * [material-ui](https://material-ui.com) to implement Google's Material Design in the React components.
 * [recompose](https://github.com/acdlite/recompose) to create Higher-Order-Components and be able to separate components rendering from logic.
 
+## Possible improvements
+
+* Install and use [react-intl](https://github.com/yahoo/react-intl) library to add support for UI translation and internationalization (i18n).
+* If we want the user to be able to navigate between different routes, install and use [react-router](https://reacttraining.com/react-router/) library.
+
 ## create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
