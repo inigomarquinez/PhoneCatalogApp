@@ -2,6 +2,8 @@
 
 A very simple Phone Catalog App.
 
+Read the challenge [here](https://github.com/inigomarquinez/PhoneCatalogApp/tree/master/CHALLENGE.md).
+
 ## Modules
 
 The application is composed of two modules:
